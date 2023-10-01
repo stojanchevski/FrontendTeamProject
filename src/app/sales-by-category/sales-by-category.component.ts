@@ -5,7 +5,14 @@ import { Chart } from 'angular-highcharts';
   templateUrl: './sales-by-category.component.html',
   styleUrls: ['./sales-by-category.component.scss']
 })
+
+
 export class SalesByCategoryComponent {
+  openDjangoForm() {
+    const djangoFormUrl = 'http://127.0.0.1:8000/'; // Replace with your Django form URL
+    window.open(djangoFormUrl, '_blank');
+  }
+  
   chart = new Chart({
     chart: {
       type: 'pie',

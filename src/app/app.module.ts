@@ -12,6 +12,7 @@ import { LastFewTransactionsComponent } from './last-few-transactions/last-few-t
 import { TopThreeProductsComponent } from './top-three-products/top-three-products.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ChartModule } from 'angular-highcharts';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,13 @@ import { ChartModule } from 'angular-highcharts';
     SalesByMonthComponent,
     SalesByCategoryComponent,
     LastFewTransactionsComponent,
-    TopThreeProductsComponent
+    TopThreeProductsComponent,
   ],
   imports: [
     BrowserModule,
     HighchartsChartModule,
-    ChartModule
+    ChartModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
