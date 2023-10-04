@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Chart } from 'angular-highcharts';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-top-three-products',
@@ -8,60 +8,16 @@ import { Chart } from 'angular-highcharts';
 })
 
 export class TopThreeProductsComponent {
-  chart = new Chart({
-    chart: {
-      type: 'bar',
-      height: 225
-    },
-    title: {
-      text: 'Top 3 Products'
-    },
-    xAxis: {
-      categories: [
-        'Lenova Thinkpad E15',
-        'Nectar Orange Juice',
-        'Axe Deodarant',
-      ]
-    },
-    yAxis: {
-      title: {
-        text: ''
-      }
-    },
-    series: [
-     {
-      type: 'bar',
-      showInLegend: false,
-      data: [
-        {
-          name: 'Lenova Thinkpad E15',
-          y: 395,
-          color: '#044342',
-        },
-        {
-          name: 'Nectar Orange Juice',
-          y: 385,
-          color: '#7e0505',
-        },
-        {
-          name: 'Axe Deodarant',
-          y: 275,
-          color: '#ed9e20',
-        },
-      ]
-     }
-    ],
-    credits: {
-      enabled: false
-    }
-  })
+  jsonData: any; // Declare a variable to store the JSON data
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
+  fetchData() {
+    const apiUrl = 'http://127.0.0.1:8000/api/result';
+
+    this.http.get(apiUrl).subscribe((data: any) => {
+      // Store the fetched JSON data
+      this.jsonData = data[data.length - 1];
+    });
   }
-
-
-
-
 }
